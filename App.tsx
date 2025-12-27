@@ -1,0 +1,1 @@
+// Arquivo consolidado no index.html para deploy simplificado.
