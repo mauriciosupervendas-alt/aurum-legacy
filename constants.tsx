@@ -1,6 +1,5 @@
 
-import { Shield, Droplets, Wind, Zap, Eye, Car, Brush } from 'lucide-react';
-import { Testimonial } from './types';
+import { Shield, Droplets, Zap, Eye, Car, Brush } from 'lucide-react';
 
 export const PHONE_NUMBER = "5548991632244";
 export const INSTAGRAM = "@mfaurumlegacy";
@@ -72,7 +71,7 @@ export const COMBOS = [
   }
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
+export const TESTIMONIALS = [
   {
     id: 1,
     name: "João Pedro",
