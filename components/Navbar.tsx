@@ -1,12 +1,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { WHATSAPP_URL } from '../constants';
+import { useContent } from '../contexts/ContentContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { content } = useContent();
+
+  const encodedMessage = encodeURIComponent(
+    `Olá, MF Aurum Legacy!\n\n` +
+    `Quero tirar dúvidas`
+  );
+  const whatsappUrl = `https://wa.me/${content.contact.phone}?text=${encodedMessage}`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +33,8 @@ const Navbar: React.FC = () => {
 
   const handleLinkClick = (id: string) => {
     setIsMenuOpen(false);
-    const element = document.getElementById(id);
+    const targetId = id === 'services' ? 'packages' : id;
+    const element = document.getElementById(targetId);
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 80,
@@ -65,11 +73,11 @@ const Navbar: React.FC = () => {
             ))}
           </div>
           <a 
-            href={WHATSAPP_URL} 
+            href={whatsappUrl}
             target="_blank" 
             className="bg-red-gradient text-white px-8 py-3 text-[10px] font-black tracking-[0.2em] hover:brightness-110 transition-all shadow-[0_0_20px_rgba(220,38,38,0.2)] uppercase hover:scale-105 active:scale-95 rounded-lg"
           >
-            PEDIR ORÇAMENTO
+            TIRE SUAS DÚVIDAS
           </a>
         </div>
 
@@ -91,11 +99,11 @@ const Navbar: React.FC = () => {
           ))}
           <div className="w-full pt-8">
             <a 
-              href={WHATSAPP_URL} 
+              href={whatsappUrl} 
               target="_blank" 
               className="block w-full text-center bg-red-gradient text-white py-5 font-bold tracking-widest text-xs uppercase shadow-2xl rounded-xl"
             >
-              Falar no WhatsApp
+              TIRE SUAS DÚVIDAS
             </a>
           </div>
         </div>

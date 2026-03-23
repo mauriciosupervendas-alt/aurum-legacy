@@ -25,6 +25,9 @@
             background: linear-gradient(to right, #FF4D4D, #DC2626);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            padding-right: 0.4em;
+            padding-top: 0.2em;
+            padding-bottom: 0.1em;
         }
         .reveal {
             opacity: 0;
@@ -56,6 +59,13 @@
             background: #DC2626;
             border-radius: 10px;
         }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
     <script type="importmap">
 {
@@ -69,9 +79,11 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
     <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>

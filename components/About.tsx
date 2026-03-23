@@ -3,9 +3,9 @@ import { Trophy, Star, ShieldCheck } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-32 bg-[#080808] overflow-hidden relative">
+    <section id="about" className="py-12 md:py-20 bg-[#080808] overflow-hidden relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           <div className="w-full lg:w-1/2 relative reveal">
             <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative z-10">
               <img 
@@ -21,11 +21,11 @@ const About: React.FC = () => {
           </div>
           
           <div className="w-full lg:w-1/2 reveal">
-            <h2 className="text-red-600 font-black tracking-[0.5em] mb-6 text-xs uppercase italic">A Nossa Essência</h2>
-            <h3 className="text-4xl md:text-7xl font-black mb-10 leading-[0.9] uppercase italic tracking-tighter">
-              UM LEGADO DE <br /><span className="text-red-gradient">PERFEIÇÃO</span>
+            <h2 className="text-red-600 font-black tracking-[0.5em] mb-4 md:mb-6 text-xs uppercase italic">A Nossa Essência</h2>
+            <h3 className="text-4xl md:text-6xl font-black mb-4 md:mb-6 leading-[0.9] uppercase italic tracking-tighter">
+              UM LEGADO DE <span className="block w-fit mt-2 md:mt-4 text-red-gradient">PERFEIÇÃO</span>
             </h3>
-            <div className="space-y-8 text-gray-500 text-lg leading-relaxed font-light">
+            <div className="space-y-4 md:space-y-6 text-gray-500 text-base md:text-lg leading-relaxed font-light">
               <p>
                 Na <span className="text-white font-bold">MF Aurum Legacy</span>, elevamos o cuidado automotivo ao nível de arte. Localizada no coração de Criciúma, nossa boutique de estética nasceu da paixão visceral por veículos impecáveis.
               </p>
@@ -34,26 +34,26 @@ const About: React.FC = () => {
               </p>
             </div>
             
-            <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-10 border-t border-white/5 pt-12">
-               <div className="flex flex-col items-center sm:items-start gap-4">
-                  <div className="bg-red-600/10 p-4 rounded-2xl text-red-600 border border-red-600/20"><ShieldCheck size={32} /></div>
-                  <div className="text-center sm:text-left">
-                    <p className="text-white font-black uppercase text-xs tracking-widest">Proteção</p>
-                    <p className="text-[10px] text-gray-600 uppercase mt-1 font-bold">Garantida</p>
+            <div className="mt-8 md:mt-10 grid grid-cols-3 gap-3 md:gap-8 border-t border-white/5 pt-6 md:pt-8">
+               <div className="flex flex-col items-center gap-3 md:gap-4">
+                  <div className="bg-red-600/10 p-3 md:p-4 rounded-2xl text-red-600 border border-red-600/20"><ShieldCheck size={24} className="md:w-8 md:h-8" /></div>
+                  <div className="text-center">
+                    <p className="text-white font-black uppercase text-[10px] md:text-xs tracking-widest">Proteção</p>
+                    <p className="text-[8px] md:text-[10px] text-gray-600 uppercase mt-1 font-bold">Garantida</p>
                   </div>
                </div>
-               <div className="flex flex-col items-center sm:items-start gap-4">
-                  <div className="bg-red-600/10 p-4 rounded-2xl text-red-600 border border-red-600/20"><Star size={32} /></div>
-                  <div className="text-center sm:text-left">
-                    <p className="text-white font-black uppercase text-xs tracking-widest">Brilho</p>
-                    <p className="text-[10px] text-gray-600 uppercase mt-1 font-bold">Inigualável</p>
+               <div className="flex flex-col items-center gap-4">
+                  <div className="bg-red-600/10 p-3 md:p-4 rounded-2xl text-red-600 border border-red-600/20"><Star size={24} className="md:w-8 md:h-8" /></div>
+                  <div className="text-center">
+                    <p className="text-white font-black uppercase text-[10px] md:text-xs tracking-widest">Brilho</p>
+                    <p className="text-[8px] md:text-[10px] text-gray-600 uppercase mt-1 font-bold">Inigualável</p>
                   </div>
                </div>
-               <div className="flex flex-col items-center sm:items-start gap-4">
-                  <div className="bg-red-600/10 p-4 rounded-2xl text-red-600 border border-red-600/20"><Trophy size={32} /></div>
-                  <div className="text-center sm:text-left">
-                    <p className="text-white font-black uppercase text-xs tracking-widest">Técnica</p>
-                    <p className="text-[10px] text-gray-600 uppercase mt-1 font-bold">Certificada</p>
+               <div className="flex flex-col items-center gap-4">
+                  <div className="bg-red-600/10 p-3 md:p-4 rounded-2xl text-red-600 border border-red-600/20"><Trophy size={24} className="md:w-8 md:h-8" /></div>
+                  <div className="text-center">
+                    <p className="text-white font-black uppercase text-[10px] md:text-xs tracking-widest">Técnica</p>
+                    <p className="text-[8px] md:text-[10px] text-gray-600 uppercase mt-1 font-bold">Certificada</p>
                   </div>
                </div>
             </div>

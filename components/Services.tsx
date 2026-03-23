@@ -1,80 +1,138 @@
-import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
-import { SERVICES, COMBOS, WHATSAPP_URL } from '../constants';
+import React, { useState, useRef } from 'react';
+import { useContent } from '../contexts/ContentContext';
+import ServiceCard from './ServiceCard';
+import AddOnsSection from './AddOnsSection';
+import BookingModal from './BookingModal';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+
+interface Combo {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  priceStart: string;
+  durationMinutes: number;
+  features: string[];
+}
 
 const Services: React.FC = () => {
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<Combo | null>(null);
+  const { content } = useContent();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+
+  const scrollToElement = (id: string) => {
+    const element = itemRefs.current.get(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  };
+
+  const toggleAddOn = (id: string) => {
+    setSelectedAddOns(prev => 
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
+  const handleBook = (combo: Combo) => {
+    setSelectedPackage(combo);
+    setIsModalOpen(true);
+    scrollToElement(combo.id);
+  };
+
+  const handleBookStandalone = () => {
+    setSelectedPackage({
+      id: 'standalone-addons',
+      name: 'Serviços Adicionais',
+      tagline: 'Personalizado',
+      description: 'Agendamento apenas de serviços adicionais.',
+      priceStart: 'R$ 0,00',
+      durationMinutes: 0,
+      features: []
+    });
+    setIsModalOpen(true);
+  };
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = isMobile ? window.innerWidth * 0.85 : scrollContainerRef.current.clientWidth / 3;
+      scrollContainerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = isMobile ? window.innerWidth * 0.85 : scrollContainerRef.current.clientWidth / 3;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="services" className="py-24 bg-[#0a0c10]">
-      <div className="container mx-auto px-6 mb-24">
-        <div className="text-center mb-16 reveal">
-          <h3 className="text-red-500 font-bold tracking-widest mb-4 uppercase text-sm">Serviços Profissionais</h3>
-          <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase">O que seu carro precisa?</h2>
-          <div className="w-20 h-1 bg-red-gradient mx-auto rounded-full"></div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((s) => (
-            <div key={s.id} className="bg-[#16191f] p-8 rounded-2xl border border-white/5 hover:border-red-500/30 transition-all group reveal">
-              <div className="bg-red-500/10 w-14 h-14 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:bg-red-600 group-hover:text-white transition-all">
-                <s.icon size={28} />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-4 uppercase">{s.title}</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {s.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="py-16 bg-gradient-to-b from-[#0a0c10] to-[#0f1115]">
+    <section id="services" className="bg-[#0a0c10]">
+      <div id="packages" className="py-8 md:py-12 bg-gradient-to-b from-[#0a0c10] to-[#0f1115]">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16 reveal">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase">Nossos Pacotes</h2>
-            <p className="text-gray-500 font-medium uppercase tracking-widest text-xs">O cuidado que seu legado merece</p>
+          <div className="text-center mb-6 md:mb-10 reveal">
+            <h2 className="text-2xl md:text-5xl font-black mb-2 md:mb-4 uppercase">Nossos Pacotes</h2>
+            <p className="text-gray-500 font-medium uppercase tracking-widest text-[10px] md:text-xs">O cuidado que seu legado merece</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {COMBOS.map((combo) => (
-              <div 
-                key={combo.id} 
-                className={`relative p-10 rounded-[2.5rem] bg-[#16191f] border transition-all flex flex-col h-full reveal ${combo.id === 'aurum-top' ? 'border-red-600 shadow-red-glow scale-105 z-10' : 'border-white/5 opacity-80 hover:opacity-100'}`}
-              >
-                {combo.id === 'aurum-top' && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-gradient text-white text-[10px] font-black px-8 py-2 rounded-full uppercase tracking-[0.2em] shadow-xl">
-                    Elite Choice
-                  </div>
-                )}
-                <div className="mb-6">
-                  <h5 className="text-red-500 text-[10px] font-black tracking-[0.3em] uppercase mb-3">{combo.tagline}</h5>
-                  <h4 className="text-3xl font-black text-white uppercase italic tracking-tighter">{combo.name}</h4>
-                </div>
-                <div className="mb-8">
-                  <span className="text-xl font-black text-white/50">{combo.priceLabel}</span>
-                </div>
-                <p className="text-gray-400 mb-8 text-sm leading-relaxed italic">
-                  {combo.description}
-                </p>
-                <div className="space-y-4 mb-10 flex-grow">
-                  {combo.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-4 text-sm text-gray-300">
-                      <CheckCircle2 size={18} className="text-red-600 shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-                <a 
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  className={`block text-center py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all ${combo.id === 'aurum-top' ? 'bg-red-gradient text-white shadow-lg' : 'bg-white/5 text-white hover:bg-white/10'}`}
+          <div className="relative">
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory pt-4 md:pt-8 pb-4 md:pb-0 px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide"
+            >
+              {content.combos.map((combo) => (
+                <div 
+                  key={combo.id} 
+                  ref={(el) => {
+                    if (el) itemRefs.current.set(combo.id, el);
+                    else itemRefs.current.delete(combo.id);
+                  }}
+                  className="w-[85vw] md:w-[calc(33.333%-1.33rem)] snap-center snap-always h-full shrink-0"
+                  onClick={() => scrollToElement(combo.id)}
                 >
-                  Orçamento no WhatsApp
-                </a>
-              </div>
-            ))}
+                  <ServiceCard 
+                    combo={combo} 
+                    selectedAddOns={selectedAddOns} 
+                    onBook={handleBook}
+                  />
+                </div>
+              ))}
+            </div>
+            
+            {/* Navigation Controls */}
+            <div className={`flex justify-center gap-6 mt-6 ${content.combos.length > 3 ? 'flex' : 'md:hidden'}`}>
+              <button 
+                onClick={scrollLeft}
+                className="p-3 bg-[#16191f] rounded-full border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all shadow-lg"
+                aria-label="Anterior"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                onClick={scrollRight}
+                className="p-3 bg-[#16191f] rounded-full border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all shadow-lg"
+                aria-label="Próximo"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
+
+          <AddOnsSection selectedAddOns={selectedAddOns} toggleAddOn={toggleAddOn} onBookStandalone={handleBookStandalone} />
         </div>
       </div>
+
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        selectedPackage={selectedPackage}
+        selectedAddOns={selectedAddOns}
+      />
     </section>
   );
 };

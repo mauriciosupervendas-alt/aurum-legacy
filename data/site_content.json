@@ -1,0 +1,193 @@
+{
+  "contact": {
+    "phone": "5548991632244",
+    "instagram": "@aurumlegacydetail",
+    "address": "Criciúma, SC (Próximo ao Centro)"
+  },
+  "services": [
+    {
+      "id": "lavagem-completa",
+      "title": "Lavagem Completa + Cera",
+      "description": "Lavagem detalhada da lataria, caixas de roda e aplicação de cera de brilho protetora.",
+      "icon": "Car"
+    },
+    {
+      "id": "higienizacao-interna",
+      "title": "Higienização Interna",
+      "description": "Limpeza profunda de bancos, carpetes e painel. Removemos manchas e odores.",
+      "icon": "Brush"
+    },
+    {
+      "id": "limpeza-motor",
+      "title": "Limpeza de Motor",
+      "description": "Remoção de graxa e sujeira pesada com produtos seguros para a parte elétrica.",
+      "icon": "Zap"
+    },
+    {
+      "id": "protecao-pintura",
+      "title": "Proteção de Pintura",
+      "description": "Aplicação de selante que mantém o carro limpo por muito mais tempo e protege a cor.",
+      "icon": "Shield"
+    },
+    {
+      "id": "vidros",
+      "title": "Limpeza de Vidros",
+      "description": "Remoção de manchas d'água e cristalização para melhor visibilidade na chuva.",
+      "icon": "Droplets"
+    },
+    {
+      "id": "farois",
+      "title": "Polimento de Faróis",
+      "description": "Recuperamos a transparência dos faróis amarelados, aumentando sua segurança.",
+      "icon": "Eye"
+    }
+  ],
+  "combos": [
+    {
+      "id": "basico",
+      "name": "Básico",
+      "tagline": "Manutenção Essencial",
+      "description": "A limpeza ideal para o dia a dia, mantendo seu carro limpo e organizado.",
+      "priceStart": "R$ 60,00",
+      "durationMinutes": 60,
+      "features": [
+        "Pré-lavagem com Snow Foam",
+        "Lavagem Manual Detalhada",
+        "Limpeza de Rodas e Pneus",
+        "Secagem Técnica",
+        "Aspiração Interna Completa",
+        "Limpeza de Vidros",
+        "Pretinho nos Pneus"
+      ]
+    },
+    {
+      "id": "intermediario",
+      "name": "Intermediário",
+      "tagline": "Brilho e Proteção",
+      "description": "Um upgrade no cuidado, com aplicação de cera e atenção aos detalhes.",
+      "priceStart": "R$ 120,00",
+      "durationMinutes": 120,
+      "features": [
+        "Todos os itens do Básico",
+        "Descontaminação de Rodas",
+        "Aplicação de Cera Protetora",
+        "Condicionamento de Plásticos Ext.",
+        "Limpeza Detalhada de Painel",
+        "Limpeza de Tapetes",
+        "Perfume Interno"
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "tagline": "Experiência Completa",
+      "description": "O tratamento definitivo para renovar completamente seu veículo.",
+      "priceStart": "R$ 250,00",
+      "durationMinutes": 240,
+      "features": [
+        "Todos os itens do Intermediário",
+        "Lavagem Técnica de Motor",
+        "Higienização de Bancos",
+        "Hidratação de Couro (se houver)",
+        "Oxi-sanitização",
+        "Revitalização de Plásticos Int.",
+        "Limpeza de Saídas de Ar"
+      ]
+    }
+  ],
+  "addOns": [
+    {
+      "id": "motor",
+      "name": "Lavagem Técnica de Motor",
+      "description": "Limpeza detalhada e segura do cofre do motor, com proteção de verniz para plásticos e borrachas.",
+      "price": "R$ 80,00",
+      "durationMinutes": 60
+    },
+    {
+      "id": "higienizacao-bancos",
+      "name": "Higienização de Bancos",
+      "description": "Limpeza profunda com extratora para remoção de sujeira, manchas e ácaros dos tecidos.",
+      "price": "R$ 150,00",
+      "durationMinutes": 120
+    },
+    {
+      "id": "hidratacao-couro",
+      "name": "Hidratação de Couro",
+      "description": "Limpeza e condicionamento dos bancos de couro para evitar ressecamento e rachaduras.",
+      "price": "R$ 100,00",
+      "durationMinutes": 60
+    },
+    {
+      "id": "farois",
+      "name": "Restauração de Faróis",
+      "description": "Lixamento técnico e polimento para remover amarelado e oxidação, devolvendo transparência.",
+      "price": "R$ 80,00",
+      "durationMinutes": 60
+    },
+    {
+      "id": "chuva-acida",
+      "name": "Remoção de Chuva Ácida",
+      "description": "Tratamento específico para vidros com manchas d'água incrustadas, melhorando a visibilidade.",
+      "price": "R$ 100,00",
+      "durationMinutes": 60
+    },
+    {
+      "id": "descontaminacao",
+      "name": "Descontaminação de Pintura",
+      "description": "Uso de Clay Bar para remover impurezas ásperas do verniz, deixando a pintura lisa.",
+      "price": "R$ 150,00",
+      "durationMinutes": 60
+    },
+    {
+      "id": "impermeabilizacao",
+      "name": "Impermeabilização de Bancos",
+      "description": "Proteção nano-tecnológica para tecidos, repelindo líquidos e evitando manchas.",
+      "price": "R$ 200,00",
+      "durationMinutes": 60
+    },
+    {
+      "id": "oxi",
+      "name": "Oxi-sanitização",
+      "description": "Eliminação de odores, fungos e bactérias do interior do veículo e ar condicionado.",
+      "price": "R$ 100,00",
+      "durationMinutes": 30
+    },
+    {
+      "id": "polimento",
+      "name": "Polimento Comercial",
+      "description": "Polimento de etapa única para realçar o brilho e remover riscos superficiais (swirls).",
+      "price": "R$ 350,00",
+      "durationMinutes": 240
+    },
+    {
+      "id": "vitrificacao",
+      "name": "Vitrificação de Pintura",
+      "description": "Proteção cerâmica de alta dureza (9H) por até 3 anos. Brilho intenso e repelência.",
+      "price": "R$ 800,00",
+      "durationMinutes": 360
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "João Pedro",
+      "role": "Chevrolet Onix",
+      "text": "O melhor custo-benefício de Criciúma. O carro volta parecendo que saiu da concessionária, muito capricho!",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Mariana Costa",
+      "role": "Hyundai HB20",
+      "text": "Sempre levo meu carro lá. São rápidos, honestos e o preço é muito justo. Recomendo a lavagem com cera.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Carlos Alberto",
+      "role": "VW Gol G6",
+      "text": "Fiz a higienização dos bancos e ficou 100%. Tiraram manchas que eu achei que nunca iam sair.",
+      "rating": 4
+    }
+  ]
+}
