@@ -75,12 +75,12 @@ const ContentEditor: React.FC<ContentEditorProps> = ({ password }) => {
         if (field === 'priceStart' || field === 'price') {
           item.categoryPricing = {
             ...item.categoryPricing,
-            SMALL: { ...item.categoryPricing.SMALL, price: value }
+            SMALL: { ...(item.categoryPricing.SMALL || {}), price: value }
           };
         } else if (field === 'durationMinutes') {
           item.categoryPricing = {
             ...item.categoryPricing,
-            SMALL: { ...item.categoryPricing.SMALL, durationMinutes: value }
+            SMALL: { ...(item.categoryPricing.SMALL || {}), durationMinutes: value }
           };
         }
       }
@@ -108,7 +108,7 @@ const ContentEditor: React.FC<ContentEditorProps> = ({ password }) => {
       item.categoryPricing = {
         ...item.categoryPricing,
         [category]: {
-          ...item.categoryPricing[category],
+          ...(item.categoryPricing[category] || {}),
           [field]: value
         }
       };

@@ -82,7 +82,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Serve static files from uploads directory
 app.use('/uploads', express.static(uploadsDir));
@@ -109,8 +110,13 @@ app.post('/api/admin/content', (req, res) => {
     return res.status(400).json({ error: 'No content provided' });
   }
 
-  saveSiteContent(content);
-  res.json({ success: true });
+  try {
+    saveSiteContent(content);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error saving site content:', error);
+    res.status(500).json({ error: 'Failed to save content' });
+  }
 });
 
 // API Route to add a new testimonial (Public)
